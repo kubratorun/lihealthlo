@@ -1,0 +1,41 @@
+<aside id="aside" class="col-md-4">
+<!--SEARCH PART-->
+	<div class="widget">
+		<div class="widget-search">
+			<form action="/posts/search" method="GET">
+			<input class="search-input form-control" type="text" name="look" placeholder="Search">
+			<button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+			</form>
+		</div>
+	</div>
+	<!-- /Search -->
+	<div class="widget">
+		<h3 class="mb-3">Categories</h3>
+		<div class="widget-category">
+			{{#each categories}}
+
+			<!--ŞİMDİ BURADA main.js 'lookup ı buraya çağırcaz -->
+			<a href="/posts/category/{{_id }}">{{name}}<span>({{num_of_posts}})</span></a>
+			{{/each}}
+		</div>
+	</div>
+	<div class="widget">
+		<h3 class="mb-3">Latest Posts</h3>
+
+		<!-- single post -->
+		{{#each (limit posts 2)}}
+		<div class="widget-post">
+			<a href="/posts/{{_id}}">
+				<img class="img-fluid" src="{{post_image}}" alt="">{{title}}
+			</a>
+			<ul class="blog-meta">
+				<li>{{generateDate date "LL"}} </li>
+			</ul>
+		</div>
+		<!-- /single post -->
+		{{/each}}
+
+	</div>
+	<!-- /Posts sidebar -->
+
+</aside>
